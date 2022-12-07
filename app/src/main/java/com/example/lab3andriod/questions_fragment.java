@@ -16,7 +16,7 @@ import android.widget.TextView;
  */
 public class questions_fragment extends Fragment {
     TextView questionstext;
-    int questions;
+    String questions;
     int color;
 
 
@@ -29,11 +29,12 @@ public class questions_fragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public static questions_fragment newInstance(int qId, int clrId) {
+    public static questions_fragment newInstance(int qId, int clrId, String question) {
 
         Bundle args = new Bundle();
         args.putInt("QuestionId",qId);
         args.putInt("ColorId",clrId);
+        args.putString("question",question);
         questions_fragment fragment = new questions_fragment();
         fragment.setArguments(args);
         return fragment;
@@ -68,7 +69,7 @@ public class questions_fragment extends Fragment {
                 container, false);
          questionstext = (TextView) view.findViewById(R.id.questionstext);
          color = getArguments().getInt("ColorId");
-         questions = getArguments().getInt("questionId");
+         questions = getArguments().getString("question");
          questionstext.setText(questions);
          questionstext.setBackgroundResource(color);
 

@@ -26,7 +26,6 @@
         android:text="True"
         android:backgroundTint="@color/ForestGreen"
         android:textColor="@color/black"
-        android:onClick="ButtonClicked"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/falsebut"
         app:layout_constraintTop_toBottomOf="@+id/fragment_container"/>
@@ -35,8 +34,7 @@
         android:tag="false"
         android:textColor="@color/black"
         android:backgroundTint="@color/Red"
-        android:onClick="ButtonClicked"
-        android:layout_width="wrap_content"
+               android:layout_width="wrap_content"
         android:layout_marginTop="20sp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@+id/truebut"

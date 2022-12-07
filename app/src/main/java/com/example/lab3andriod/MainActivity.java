@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
     int ColorID;
     questions_fragment fragmentObj;
     QuestionList obj = new QuestionList();
+    String question ;
 
 
 
@@ -34,9 +35,10 @@ public class MainActivity extends AppCompatActivity {
             index = savedInstanceState.getInt("QuestionIndex");
         }
 
-        QuesId = obj.quetionBank.get(index).questions;
+        QuesId = index;
+        question = obj.quetionBank.get(index).questions;
         ColorID = obj.color.get(index);
-        UpdateFragment (QuesId, ColorID);
+        UpdateFragment (QuesId, ColorID,question);
         progressBar = (ProgressBar)findViewById(R.id.progressBar);
         progressBar.setMax(100);
         progressBar.setProgress(0);
@@ -44,10 +46,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void UpdateFragment(int quesId, int colorID){
+    public void UpdateFragment(int quesId, int colorID,String question){
         FragmentManager fragmentmanager = getSupportFragmentManager();
         fragmentmanager.findFragmentById(R.id.fragment_container);
-        fragmentObj =  questions_fragment.newInstance(quesId, colorID);
+        fragmentObj =  questions_fragment.newInstance(quesId, colorID,question);
         fragmentmanager.beginTransaction().replace(R.id.fragment_container, fragmentObj).commit();
     }
 }
