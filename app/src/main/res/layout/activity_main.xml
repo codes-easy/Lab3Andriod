@@ -19,8 +19,7 @@
    </FrameLayout>
 
     <Button android:id="@+id/truebut"
-        android:tag="true"
-        android:layout_width="wrap_content"
+         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20sp"
         android:text="True"
@@ -31,8 +30,7 @@
         app:layout_constraintTop_toBottomOf="@+id/fragment_container"/>
 
     <Button android:id="@+id/falsebut"
-        android:tag="false"
-        android:textColor="@color/black"
+           android:textColor="@color/black"
         android:backgroundTint="@color/Red"
                android:layout_width="wrap_content"
         android:layout_marginTop="20sp"

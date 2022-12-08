@@ -2,6 +2,18 @@
     <string name="app_name">Lab3Andriod</string>
     <!-- TODO: Remove or change this placeholder text -->
 <!--    <string name="hello_blank_fragment">Hello blank fragment</string>-->
-
+    <string name="Question1">"Washington is the capital city of USA", </string>
+    <string name="Question2">"Montreal is the capital city of Canada"</string>
+    <string name="Question3">"Itly is the capital city of France" </string>
+    <string name="Question4">"Rome is the capital city of Paris" </string>
+    <string name="Question5">"Southwales is the capital city of Australia" </string>
+    <string name="Question6">"Ottawa is the capital city of Canada" </string>
+    <string name="Question7">"Paris is the capital city of France" </string>
+    <string name="Question8">"Rome is the capital city of Itlay" </string>
+    <string name="Question9">"Sydney is the capital city of Australia" </string>
+    <string name="Question10">"Taj Mahal is in Duabi", false</string>
+    <string name="CorrectAnswer">Correct Answer</string>
+    <string name="IncorrectAnswer">Incorrect Answer</string>
+    <string name="false">False</string>
 
 </resources>
