@@ -1,12 +1,12 @@
 package com.example.lab3andriod;
 
 public class Questions {
-    String questions;
-    Boolean answers;
+    String question;
+    Boolean answer;
 
-    public Questions(String questions, Boolean answer) {
-        this.questions = questions;
-        this.answers = answers;
+    public Questions(String question, Boolean answer) {
+        this.question = question;
+        this.answer = answer;
 
 
     }
