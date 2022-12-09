@@ -6,13 +6,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
 import android.content.DialogInterface;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import java.util.Collections;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity  implements View.OnClickListener {
     int index;
@@ -20,17 +25,20 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
     int ColorID,totalScore;
     Button truebut, falsebut;
     ProgressBar progressBar;
-
+    MarksStorage marksStorage = new MarksStorage();
     questions_fragment fragmentObj;
     QuestionList obj = new QuestionList();
     String question;
     String getAverage;
+    private Object localeManager;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         truebut = findViewById(R.id.truebut);
         truebut.setOnClickListener(this);
@@ -61,13 +69,58 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         outState.putInt("QuestionIndex", index);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        super.onOptionsItemSelected(item);
+        switch (item.getItemId()){
+            case R.id.average: {
+                String message = marksStorage.GetData(MainActivity.this);
+                int attemptCount = marksStorage.CountNumberOfAttempts();
+                int totalAverage = marksStorage.CountAverageScore();
+                System.out.println("Average Score = " + totalAverage);
+                String dialogMessage = "Your correct answers are " + totalAverage
+                        + " in " + attemptCount + " attempts !!"; //String to display in dialog box
+                System.out.println(dialogMessage);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle(dialogMessage);
+                builder.setPositiveButton("OK", null);
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+                break;
+            }
+
+            case R.id.reset_data:{
+                marksStorage.ResetData(MainActivity.this);
+                break;
+            }
+        }
+        return true;
+    }
+
     public void UpdateFragment(int quesId, int colorID, String question) {
         FragmentManager fragmentmanager = getSupportFragmentManager();
         fragmentmanager.findFragmentById(R.id.fragment_container);
         fragmentObj = questions_fragment.newInstance(quesId, colorID, question);
         fragmentmanager.beginTransaction().replace(R.id.fragment_container, fragmentObj).commit();
     }
+    public void changeLanguage(String language)
+    {
+        Locale locale = new Locale(language);
+        Locale.setDefault(locale);
+        Configuration configuration = new Configuration();
+        configuration.locale =locale;
+        getApplication().getResources().updateConfiguration(configuration,getApplicationContext().
+                getResources().getDisplayMetrics());
 
+    }
     @Override
     public void onClick(View view) {
         Button button = (Button) view;
@@ -109,8 +162,8 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setTitle("Your Scores are "+ "\t" + totalScore +"\t"+ " out of 10 !!");
         getAverage = totalScore +"/" + 10 + "#";
-       // builder.setPositiveButton("Save", (dialogInterface, i) -> storageObject.SaveData
-              //  (MainActivity.this,getAverage));
+        builder.setPositiveButton("Save", (dialogInterface, i) -> marksStorage.SaveScore
+               (MainActivity.this,getAverage));
 
         totalScore=0;
         builder.setNegativeButton("Ignore",null);

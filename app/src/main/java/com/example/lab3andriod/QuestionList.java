@@ -34,12 +34,12 @@ public class QuestionList {
 
 
         color.add(R.color.SeaGreen);
-        color.add(R.color.MidnightBlue);
-        color.add(R.color.Indigo);
+        color.add(R.color.Lavender);
+        color.add(R.color.Linen);
         color.add(R.color.Lime);
         color.add(R.color.Teal);
         color.add(R.color.Cyan);
-        color.add(R.color.BlueViolet);
+        color.add(R.color.purple_200);
         color.add(R.color.PaleTurquoise);
         color.add(R.color.FireBrick);
         color.add(R.color.Orchid);

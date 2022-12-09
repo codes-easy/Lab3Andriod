@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">લેબ 3 એન્ડ્રોઇડ</string>
-
-
     <string name="Question1">"વોશિંગ્ટન યુએસએની રાજધાની છે" </string>
     <string name="Question2">"મોન્ટ્રીયલ એ કેનેડાની રાજધાની છે"</string>
     <string name="Question3">"ઇટલી ફ્રાન્સની રાજધાની છે" </string>
